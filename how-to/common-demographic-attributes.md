@@ -25,7 +25,7 @@ An attribute ID is a unique alphanumeric identifier. Culture-specific attributes
 
 ## Export Selected Attributes
 
-```bash
+```text
 curl --location --request POST 'https://{{TolunaDomain}}/api/v1/Reports/<survey ID>/startExport' \
   --header 'x-api-key: <your API key>' \
   --header 'TolunaWorkspaceID: <your workspace ID>' \

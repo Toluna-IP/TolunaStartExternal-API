@@ -12,7 +12,7 @@ Use these steps when you need survey structure details beyond the standard datam
 
 Use the basic endpoint for summary properties:
 
-```bash
+```text
 curl --location 'https://{{TolunaDomain}}/api/v1/Surveys/<survey ID>/basic' \
   --header 'x-api-key: <your API key>' \
   --header 'TolunaWorkspaceID: <workspace ID>'
@@ -20,7 +20,7 @@ curl --location 'https://{{TolunaDomain}}/api/v1/Surveys/<survey ID>/basic' \
 
 Use the full endpoint for questionnaire structure:
 
-```bash
+```text
 curl --location 'https://{{TolunaDomain}}/api/v1/Surveys/<survey ID>' \
   --header 'x-api-key: <your API key>' \
   --header 'TolunaWorkspaceID: <workspace ID>'

@@ -14,7 +14,7 @@ The guide includes:
 
 Install dependencies and run Jekyll:
 
-```bash
+```text
 bundle install
 bundle exec jekyll serve
 ```
