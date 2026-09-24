@@ -1,6 +1,6 @@
 title: Toluna Start API
 description: Developer guide for the Toluna Start API.
-theme: just-the-docs
+remote_theme: just-the-docs/just-the-docs@v0.12.0
 
 url: ""
 
@@ -17,3 +17,6 @@ callouts:
 
 aux_links:
   Swagger UI: https://api.tolunastart.com/swagger/index.html
+
+plugins:
+  - jekyll-remote-theme
