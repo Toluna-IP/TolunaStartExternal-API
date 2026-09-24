@@ -1,0 +1,2463 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "TolunaStart API",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/v1/Ping": {
+      "get": {
+        "tags": [
+          "Health"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Version": {
+      "get": {
+        "tags": [
+          "Health"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Metadata/Categories": {
+      "get": {
+        "tags": [
+          "Metadata"
+        ],
+        "description": "Get the supported category information ",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/CategoryName"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/CategoryName"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/CategoryName"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Metadata/ResearchCategories": {
+      "get": {
+        "tags": [
+          "Metadata"
+        ],
+        "description": "Get the supported research category information ",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/CategoryName"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/CategoryName"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/CategoryName"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Metadata/Cultures": {
+      "get": {
+        "tags": [
+          "Metadata"
+        ],
+        "description": "Get the supported culture information ",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "title": "CultureCode",
+                    "pattern": "[aA-zZ]{2}_[aA-zZ]{2}",
+                    "type": "string",
+                    "example": "en-US"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "title": "CultureCode",
+                    "pattern": "[aA-zZ]{2}_[aA-zZ]{2}",
+                    "type": "string",
+                    "example": "en-US"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "title": "CultureCode",
+                    "pattern": "[aA-zZ]{2}_[aA-zZ]{2}",
+                    "type": "string",
+                    "example": "en-US"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Metadata/Workspaces": {
+      "get": {
+        "tags": [
+          "Metadata"
+        ],
+        "description": "Get the supported toluna workspaces for the SF Root ID provided in the header ",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WorkSpaceInfo"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WorkSpaceInfo"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WorkSpaceInfo"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Reports/{id}/startExport": {
+      "post": {
+        "tags": [
+          "Reports"
+        ],
+        "description": "Initiates raw data export for the survey and returns a token for retrieving export results",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StartExportIncludeAttributesModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StartExportIncludeAttributesModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StartExportIncludeAttributesModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StartExportIncludeAttributesModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "title": "ExportToken",
+                  "type": "string",
+                  "example": "81ce6b10-67b4-476c-90d8-7bcdfd5116a6"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "title": "ExportToken",
+                  "type": "string",
+                  "example": "81ce6b10-67b4-476c-90d8-7bcdfd5116a6"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "title": "ExportToken",
+                  "type": "string",
+                  "example": "81ce6b10-67b4-476c-90d8-7bcdfd5116a6"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Reports/FullService/{id}/startExport": {
+      "post": {
+        "tags": [
+          "Reports"
+        ],
+        "description": "Initiates raw data export for the full service survey and returns a token for retrieving export results",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "title": "ExportToken",
+                  "type": "string",
+                  "example": "81ce6b10-67b4-476c-90d8-7bcdfd5116a6"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "title": "ExportToken",
+                  "type": "string",
+                  "example": "81ce6b10-67b4-476c-90d8-7bcdfd5116a6"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "title": "ExportToken",
+                  "type": "string",
+                  "example": "81ce6b10-67b4-476c-90d8-7bcdfd5116a6"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Reports/{exportToken}": {
+      "get": {
+        "tags": [
+          "Reports"
+        ],
+        "description": "Gets raw data export status by a token and provides the URL to the generated file if available",
+        "parameters": [
+          {
+            "name": "exportToken",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportExportResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportExportResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportExportResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Reports/FullService/{exportToken}": {
+      "get": {
+        "tags": [
+          "Reports"
+        ],
+        "description": "Gets raw data export status by a token and provides the URL to the generated file if available",
+        "parameters": [
+          {
+            "name": "exportToken",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportExportResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportExportResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportExportResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Reports/ChangeSet": {
+      "post": {
+        "tags": [
+          "Reports"
+        ],
+        "description": "Returns list of surveys that had any activity during the specified time period.Can be filtered by survey status. Pending and Scheduled statuses not valid as those do not have reports yet.",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeSetQuery"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeSetQuery"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeSetQuery"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeSetQuery"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ChangeSet"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ChangeSet"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ChangeSet"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Reports/FullService/ChangeSet": {
+      "post": {
+        "tags": [
+          "Reports"
+        ],
+        "description": "Returns list of surveys that had any activity during the specified time period.Can be filtered by survey status. Pending and Scheduled statuses not valid as those do not have reports yet.",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FullServiceChangeSetQuery"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FullServiceChangeSetQuery"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FullServiceChangeSetQuery"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FullServiceChangeSetQuery"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ChangeSet"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ChangeSet"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ChangeSet"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Reports/GetOriginalMediaUrl": {
+      "post": {
+        "tags": [
+          "Reports"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Surveys/{id}/basic": {
+      "get": {
+        "tags": [
+          "Surveys"
+        ],
+        "description": "Returns basic information on the survey, including ID, title, status, test and report links",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BasicSurvey"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BasicSurvey"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BasicSurvey"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Surveys/{id}": {
+      "get": {
+        "tags": [
+          "Surveys"
+        ],
+        "description": "Returns details for the specififed survey, including full questionnaire and basic target information (audience type, sample size, IR, and audience culture)",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Survey"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Survey"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Survey"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Surveys"
+        ],
+        "description": "Overrides existing survey with the new structure",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Survey"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Survey"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Survey"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Survey"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BasicSurvey"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BasicSurvey"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BasicSurvey"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Surveys"
+        ],
+        "description": "Deletes specific survey",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/Surveys": {
+      "post": {
+        "tags": [
+          "Surveys"
+        ],
+        "description": "Creates a survey with provided questionnaire structure and target details. In case when Toluna Influencers audience is specified, a NatRep quota is configured automatically for the specified target country",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Survey"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Survey"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Survey"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Survey"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BasicSurvey"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BasicSurvey"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BasicSurvey"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Surveys/Search": {
+      "post": {
+        "tags": [
+          "Surveys"
+        ],
+        "description": "Returns paginated list of surveys under the department associated with the API key with basic information, including ID, titles, and a few more fields typically required for a summary view on the projects. Can be filtered by survey status. Report links and research categories are not be returned and need to be retrieved for individual surveys. ",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchSurveysInputModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchSurveysInputModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchSurveysInputModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchSurveysInputModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BasicSurvey"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BasicSurvey"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BasicSurvey"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Surveys/{id}/clone": {
+      "post": {
+        "tags": [
+          "Surveys"
+        ],
+        "description": "Duplicates specified survey, including the questionnaire, target, and quota configuration",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BasicSurvey"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BasicSurvey"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BasicSurvey"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Surveys/{id}/billing": {
+      "get": {
+        "tags": [
+          "Surveys"
+        ],
+        "description": "Returns billing information for the survey including estimated costs, credits available for the account, and payment history if the survey is already live",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SurveyBillingInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SurveyBillingInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SurveyBillingInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Surveys/{id}/feasibility": {
+      "get": {
+        "tags": [
+          "Surveys"
+        ],
+        "description": "Returns estimated feasibility for the survey based on the expected LOI and required sample",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SurveyFeasibilityInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SurveyFeasibilityInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SurveyFeasibilityInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Surveys/{id}/launch": {
+      "put": {
+        "tags": [
+          "Surveys"
+        ],
+        "description": "Processes payment and initiates launch or relaunch of the survey. Survey price in credits has to be retrieved from the billing details and passed to this call as a safety measure. ",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "creditsToPay",
+            "in": "query",
+            "schema": {
+              "title": "Credits",
+              "type": "number",
+              "format": "double"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Surveys/{id}/pause": {
+      "put": {
+        "tags": [
+          "Surveys"
+        ],
+        "description": "Puts the survey on hold",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Surveys/{id}/fieldwork": {
+      "get": {
+        "tags": [
+          "Surveys"
+        ],
+        "description": "Returns basic fieldwork statistics for the survey ",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SurveyFieldworkDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SurveyFieldworkDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SurveyFieldworkDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Surveys/DecryptMedia": {
+      "post": {
+        "tags": [
+          "Surveys"
+        ],
+        "description": "Returns list of decrypted media links in the same order as the encrypted links received. Links that fail decryption will be returned as null",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Surveys/LocateSurveysInWorkspaces": {
+      "post": {
+        "tags": [
+          "Surveys"
+        ],
+        "description": "Returns workspace ID for each survey ID if accessible. Status is 'Found' or 'Unavailable'.",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "title": "SurveyId",
+                  "type": "number"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "title": "SurveyId",
+                  "type": "number"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "title": "SurveyId",
+                  "type": "number"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "title": "SurveyId",
+                  "type": "number"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SurveyLocationOutputDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SurveyLocationOutputDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SurveyLocationOutputDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Audience": {
+        "type": "object",
+        "properties": {
+          "audienceType": {
+            "$ref": "#/components/schemas/AudienceType"
+          },
+          "targetCompletes": {
+            "title": "Completes",
+            "maximum": 5000,
+            "minimum": 50,
+            "type": "number",
+            "nullable": true
+          },
+          "targetCompletesPerStimulus": {
+            "title": "Completes",
+            "maximum": 5000,
+            "minimum": 50,
+            "type": "number",
+            "nullable": true
+          },
+          "countryCode": {
+            "title": "CountryCode",
+            "pattern": "[A-Z]{2}",
+            "type": "string",
+            "example": "US"
+          },
+          "cultureCode": {
+            "title": "CultureCode",
+            "pattern": "[aA-zZ]{2}_[aA-zZ]{2}",
+            "type": "string",
+            "example": "en-US"
+          },
+          "incidenceRate": {
+            "title": "IncidenceRate",
+            "maximum": 100,
+            "minimum": 0,
+            "type": "number",
+            "nullable": true
+          },
+          "exclude": {
+            "type": "array",
+            "items": {
+              "title": "SurveyId",
+              "type": "number"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Provide culture code using ISO-3166 country codes and ISO-639 language codes.  For example, for audience targeting United States (English) respondents, set countryCode to \"US\" and cultureCode to \"en_US\". Only single culture surveys can be created through API at this time."
+      },
+      "AudienceType": {
+        "enum": [
+          "MyOwnAudience",
+          "TolunaInfluencers"
+        ],
+        "type": "string"
+      },
+      "BasicSurvey": {
+        "type": "object",
+        "properties": {
+          "surveyId": {
+            "title": "SurveyId",
+            "type": "number"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "internalTitle": {
+            "type": "string",
+            "nullable": true
+          },
+          "testLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/SurveyStatus"
+          },
+          "reportLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "liveLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "creatorUser": {
+            "type": "string",
+            "nullable": true
+          },
+          "cultures": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "questionnaireType": {
+            "$ref": "#/components/schemas/QuestionnaireType"
+          },
+          "audienceType": {
+            "$ref": "#/components/schemas/AudienceType"
+          },
+          "researchCategories": {
+            "$ref": "#/components/schemas/TqsResearchCategories"
+          },
+          "targetCompletes": {
+            "title": "Completes",
+            "maximum": 5000,
+            "minimum": 50,
+            "type": "number"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "categoryId": {
+            "title": "CategoryId",
+            "type": "number"
+          },
+          "dataCleanupStatus": {
+            "$ref": "#/components/schemas/DataCleanupStatus"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Block": {
+        "type": "object",
+        "properties": {
+          "blockType": {
+            "$ref": "#/components/schemas/BlockType"
+          },
+          "blockId": {
+            "$ref": "#/components/schemas/BlockId"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "elements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContentElement"
+            },
+            "nullable": true
+          },
+          "isAnchor": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Block is a structural element of the questionnaire transparent to respondents.  A typical questionnaire consists of two predefined regular blocks: introduction page and main questionnaire content. Each block contains an array of elements, where each element is a question, media, or a nested blocks structure.  The latter is used for surveys with random assignment. Block precode is generated automatically - omit when creating a survey."
+      },
+      "BlockDefinitionType": {
+        "enum": [
+          "NormalBlock",
+          "Loops",
+          "RandomAssigment"
+        ],
+        "type": "string"
+      },
+      "BlockId": {
+        "type": "object",
+        "properties": {
+          "precode": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BlockType": {
+        "enum": [
+          "NormalBlock",
+          "RandomAssigment",
+          "Page",
+          "RandomAssignmentPage",
+          "IntroPage"
+        ],
+        "type": "string"
+      },
+      "BlocksDefinition": {
+        "type": "object",
+        "properties": {
+          "blockDefinitionType": {
+            "$ref": "#/components/schemas/BlockDefinitionType"
+          },
+          "blocks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Block"
+            },
+            "nullable": true
+          },
+          "pagesRandomized": {
+            "type": "boolean"
+          },
+          "questionsRandomized": {
+            "type": "boolean"
+          },
+          "blocksRandomized": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "description": "BlocksDefinition is a wrapper around multiple blocks with meta information applicable to this blocks structure, such as randomization of elements, number of visible blocks for random assignment sections."
+      },
+      "CategoryName": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ChangeSet": {
+        "type": "object",
+        "properties": {
+          "surveyID": {
+            "title": "SurveyId",
+            "type": "number"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "internalTitle": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastActivityDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "audienceType": {
+            "$ref": "#/components/schemas/AudienceType"
+          },
+          "surveyStatus": {
+            "$ref": "#/components/schemas/SurveyStatus"
+          },
+          "tolunaWorkspaceID": {
+            "title": "WorkSpaceId",
+            "type": "number"
+          },
+          "categoryId": {
+            "title": "CategoryId",
+            "type": "number"
+          },
+          "dataCleanupStatus": {
+            "$ref": "#/components/schemas/DataCleanupStatus"
+          },
+          "researchCategories": {
+            "$ref": "#/components/schemas/ResearchCategories"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ChangeSetQuery": {
+        "type": "object",
+        "properties": {
+          "surveyStatuses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SurveyStatus"
+            },
+            "nullable": true
+          },
+          "fromTimestampUTC": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "toTimeStampUTC": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "example": {
+          "surveyStatuses": [
+            "Open",
+            "Paused",
+            "Closed"
+          ],
+          "fromTimestampUTC": "2026-09-17T18:08:48.827Z",
+          "toTimeStampUTC": "2026-09-24T18:08:48.827Z"
+        }
+      },
+      "ContentElement": {
+        "type": "object",
+        "properties": {
+          "serializableType": {
+            "$ref": "#/components/schemas/SerializableType"
+          },
+          "elementId": {
+            "$ref": "#/components/schemas/ElementId"
+          },
+          "type": {
+            "$ref": "#/components/schemas/ElementType"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Structural element of the questionnaire visible to the respondents: questions, text, media elements, page breaks.  Custom precodes can be specified on survey creation and must be unique within the survey. "
+      },
+      "CultureId": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DataCleanupStatus": {
+        "enum": [
+          "NotRequired",
+          "Pending",
+          "Completed"
+        ],
+        "type": "string"
+      },
+      "ElementId": {
+        "type": "object",
+        "properties": {
+          "precode": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ElementType": {
+        "enum": [
+          "Question",
+          "Pagebreak",
+          "Content",
+          "Media",
+          "Block",
+          "HiddenElement",
+          "Stimulus"
+        ],
+        "type": "string"
+      },
+      "EntityType": {
+        "enum": [
+          "Block",
+          "Question",
+          "Answer",
+          "Page",
+          "Survey"
+        ],
+        "type": "string"
+      },
+      "ExportStatus": {
+        "enum": [
+          "Pending",
+          "Complete",
+          "Invalid",
+          "Failed"
+        ],
+        "type": "string"
+      },
+      "Feasibility": {
+        "enum": [
+          "Feasible",
+          "BestEffort",
+          "NotFeasible",
+          "NotApplicable"
+        ],
+        "type": "string"
+      },
+      "FilterAction": {
+        "type": "object",
+        "properties": {
+          "actionType": {
+            "$ref": "#/components/schemas/FilterActionType"
+          },
+          "logicOwner": {
+            "$ref": "#/components/schemas/LogicOwner"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FilterActionType": {
+        "enum": [
+          "UNSPECIFIED",
+          "SKIPTOPAGE",
+          "SKIPTOSECTION",
+          "SCREENOUT",
+          "COMPLETE",
+          "QUOTAFULL",
+          "DONOTASK"
+        ],
+        "type": "string"
+      },
+      "FilterCondition": {
+        "type": "object",
+        "properties": {
+          "variable": {
+            "$ref": "#/components/schemas/Variable"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FilterDefinition": {
+        "type": "object",
+        "properties": {
+          "filterId": {
+            "$ref": "#/components/schemas/FilterId"
+          },
+          "condition": {
+            "$ref": "#/components/schemas/FilterCondition"
+          },
+          "actions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FilterAction"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FilterId": {
+        "type": "object",
+        "properties": {
+          "precode": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FullServiceChangeSetQuery": {
+        "type": "object",
+        "properties": {
+          "fromTimestampUTC": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "toTimeStampUTC": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LogicOwner": {
+        "type": "object",
+        "properties": {
+          "ownerType": {
+            "$ref": "#/components/schemas/EntityType"
+          },
+          "ownerPrecode": {
+            "type": "string",
+            "nullable": true
+          },
+          "ownerGuid": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MediaData": {
+        "type": "object",
+        "properties": {
+          "mediaId": {
+            "$ref": "#/components/schemas/MediaId"
+          },
+          "type": {
+            "$ref": "#/components/schemas/MediaType"
+          },
+          "mediaUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "text": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "watermark": {
+            "$ref": "#/components/schemas/MediaWatermark"
+          },
+          "mediaMetaData": {
+            "$ref": "#/components/schemas/MediaMetaData"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Wrapper object for media elements in the survey. Only image and video elements are supported at this time.  The link to the resource under mediaUrl has to be publicly accessible.  Watermarks cannot be enabled for media elements embedded by a link - omit the property when creating the survey. Media element precode is generated automatically - omit when creating a survey. "
+      },
+      "MediaId": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "externalId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MediaMetaData": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/MediaType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MediaType": {
+        "enum": [
+          "VIDEO",
+          "IMAGE",
+          "AUDIO",
+          "TEXT"
+        ],
+        "type": "string"
+      },
+      "MediaWatermark": {
+        "type": "object",
+        "properties": {
+          "textPlacement": {
+            "$ref": "#/components/schemas/TextPlacementType"
+          },
+          "content": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaidOrderDetail": {
+        "type": "object",
+        "properties": {
+          "numberOfCompletes": {
+            "title": "Completes",
+            "maximum": 5000,
+            "minimum": 50,
+            "type": "number"
+          },
+          "activationDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "QuestionnaireInfo": {
+        "type": "object",
+        "properties": {
+          "mediaData": {
+            "$ref": "#/components/schemas/MediaData"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "internalName": {
+            "type": "string",
+            "nullable": true
+          },
+          "categoryOpenText": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Global meta information on the questionnaire, such as internal name, logo, and category"
+      },
+      "QuestionnaireStructure": {
+        "type": "object",
+        "properties": {
+          "questionnaireInfo": {
+            "$ref": "#/components/schemas/QuestionnaireInfo"
+          },
+          "blocksDefinition": {
+            "$ref": "#/components/schemas/BlocksDefinition"
+          },
+          "filters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FilterDefinition"
+            },
+            "nullable": true
+          },
+          "operationalQuotas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QuotaDefinition"
+            },
+            "nullable": true
+          },
+          "scripts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Script"
+            },
+            "nullable": true
+          },
+          "hideBackButton": {
+            "type": "boolean"
+          },
+          "hideSurveyTitle": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Outer wrapper on the questionnaire contents. Consists of several inner objects with the questionnaire meta information, blocks structure, logic, custom scripts, and basic configurations for respondent experience. "
+      },
+      "QuestionnaireType": {
+        "enum": [
+          "CUSTOM_SURVEY",
+          "CONCEPT_TESTING",
+          "PACKAGE_TESTING",
+          "BRAND_HEALTH",
+          "COMMS_POST_LAUNCH",
+          "COMMS_PRE_LAUNCH"
+        ],
+        "type": "string"
+      },
+      "Quota": {
+        "type": "object",
+        "properties": {
+          "quotaAnswerId": {
+            "$ref": "#/components/schemas/QuotaAnswerId"
+          },
+          "variable": {
+            "$ref": "#/components/schemas/Variable"
+          },
+          "limit": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isPercent": {
+            "type": "boolean"
+          },
+          "achieved": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isMidField": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "QuotaAnswerId": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "QuotaDefinition": {
+        "type": "object",
+        "properties": {
+          "quotaDefinitionId": {
+            "$ref": "#/components/schemas/QuotaDefinitionId"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "quotas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Quota"
+            },
+            "nullable": true
+          },
+          "actions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FilterAction"
+            },
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/QuotaStatus"
+          },
+          "cultureIds": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CultureId"
+            },
+            "nullable": true
+          },
+          "isMidField": {
+            "type": "boolean"
+          },
+          "limit": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "externalId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "QuotaDefinitionId": {
+        "type": "object",
+        "properties": {
+          "filterId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "quotaId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "guid": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "QuotaStatus": {
+        "enum": [
+          "PendingLaunch",
+          "Live",
+          "OnHold",
+          "Closed"
+        ],
+        "type": "string"
+      },
+      "ReportExportResult": {
+        "type": "object",
+        "properties": {
+          "surveyId": {
+            "title": "SurveyId",
+            "type": "number"
+          },
+          "exportStatus": {
+            "$ref": "#/components/schemas/ExportStatus"
+          },
+          "exportURL": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ResearchCategories": {
+        "type": "object",
+        "properties": {
+          "categoryIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          },
+          "otherCategory": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Script": {
+        "type": "object",
+        "properties": {
+          "versionId": {
+            "$ref": "#/components/schemas/ScriptVersionId"
+          },
+          "scriptId": {
+            "$ref": "#/components/schemas/ScriptId"
+          },
+          "content": {
+            "type": "string",
+            "nullable": true
+          },
+          "contentUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "eventType": {
+            "$ref": "#/components/schemas/ScriptEventType"
+          },
+          "logicOwner": {
+            "$ref": "#/components/schemas/LogicOwner"
+          },
+          "creator": {
+            "$ref": "#/components/schemas/UserId"
+          },
+          "modifier": {
+            "$ref": "#/components/schemas/UserId"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ScriptEventType": {
+        "enum": [
+          "onSurveyLoad",
+          "BeforePageSubmit",
+          "BeforePageRender",
+          "AfterPageRender",
+          "BeforeQuestionRender",
+          "AfterQueationRender",
+          "OnQuestionChange",
+          "BeforeIntroPageRender",
+          "AfterIntroPageRender",
+          "QuestionCustomRendering"
+        ],
+        "type": "string"
+      },
+      "ScriptId": {
+        "type": "object",
+        "properties": {
+          "guid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "precode": {
+            "type": "string",
+            "nullable": true
+          },
+          "eventid": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ScriptVersionId": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "precode": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SearchSurveysInputModel": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageOffset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "surveyStatuses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SurveyStatus"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SerializableType": {
+        "enum": [
+          "BlockedContentElement",
+          "DisplayedContentElement",
+          "PageBreakElement",
+          "MediaContentElement",
+          "StimulusElement",
+          "CloseEndQuestionElement",
+          "GroupedQuestionElement",
+          "HeatMapElement",
+          "OpenEndQuestionElement",
+          "AnswerGroupElement",
+          "AnswerReferencedElement",
+          "QuestionAnswerElement",
+          "VariableNumericAnswer",
+          "VariableStringAnswer",
+          "VariableClosedEndAnswer",
+          "MaxdiffElement"
+        ],
+        "type": "string"
+      },
+      "StartExportIncludeAttributesModel": {
+        "type": "object",
+        "properties": {
+          "includeAttributes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Survey": {
+        "type": "object",
+        "properties": {
+          "surveyId": {
+            "title": "SurveyId",
+            "type": "number"
+          },
+          "audience": {
+            "$ref": "#/components/schemas/Audience"
+          },
+          "category": {
+            "title": "CategoryId",
+            "type": "number"
+          },
+          "researchCategories": {
+            "$ref": "#/components/schemas/TqsResearchCategories"
+          },
+          "questionnaire": {
+            "$ref": "#/components/schemas/QuestionnaireStructure"
+          }
+        },
+        "additionalProperties": false,
+        "example": "{\"SurveyId\":\"0\",\"Audience\":{\"AudienceType\":2,\"TargetCompletes\":200,\"TargetCompletesPerStimulus\":null,\"CountryCode\":\"US\",\"CultureCode\":\"en-us\",\"IncidenceRate\":100,\"Exclude\":null},\"Category\":23,\"ResearchCategories\":{\"CategoryIds\":[0],\"OtherCategory\":null},\"Questionnaire\":{\"QuestionnaireInfo\":{\"MediaData\":null,\"Name\":\"API example\",\"InternalName\":\"API example\",\"CategoryOpenText\":\"other\"},\"BlocksDefinition\":{\"BlockDefinitionType\":1,\"Blocks\":[{\"BlockType\":1,\"BlockId\":{\"Precode\":\"22dcaa2c-a2cc-4973-abb6-d8833e915597\"},\"Title\":\"Intro Page\",\"Elements\":[{\"ElementId\":{\"Precode\":\"c10611dd-1a21-4c69-b3f2-5a382ad48256\"},\"Type\":4,\"SerializableType\":4},{\"ElementId\":{\"Precode\":\"726c3e6a-7cfd-4e2d-a175-9f49248d0132\"},\"Type\":2,\"SerializableType\":3}],\"IsAnchor\":true},{\"BlockType\":1,\"BlockId\":{\"Precode\":\"9f9776d3-5a45-41d2-8cc9-a05af1d205aa\"},\"Title\":\"Main Block\",\"Elements\":[{\"ElementId\":{\"Precode\":\"q1\"},\"Type\":1,\"SerializableType\":6},{\"ElementId\":{\"Precode\":\"q4\"},\"Type\":1,\"SerializableType\":8},{\"ElementId\":{\"Precode\":\"5716cf72-9a03-442e-aaca-11a18a6b3771\"},\"Type\":2,\"SerializableType\":3},{\"ElementId\":{\"Precode\":\"q2\"},\"Type\":1,\"SerializableType\":6},{\"ElementId\":{\"Precode\":\"8902c81a-afd1-4930-a132-0f7dda403b18\"},\"Type\":2,\"SerializableType\":3},{\"ElementId\":{\"Precode\":\"q3\"},\"Type\":1,\"SerializableType\":9},{\"ElementId\":{\"Precode\":\"f4344b89-e9b5-4b16-a76f-07d79788b2bd\"},\"Type\":2,\"SerializableType\":3},{\"ElementId\":{\"Precode\":\"m-1\"},\"Type\":4,\"SerializableType\":4},{\"ElementId\":{\"Precode\":\"9e142019-8533-438e-a2d7-7a569d39493b\"},\"Type\":2,\"SerializableType\":3},{\"ElementId\":{\"Precode\":\"m-2\"},\"Type\":4,\"SerializableType\":4},{\"ElementId\":{\"Precode\":\"89116e15-272b-48b7-a922-45a071714237\"},\"Type\":2,\"SerializableType\":3},{\"ElementId\":{\"Precode\":\"q5\"},\"Type\":1,\"SerializableType\":7},{\"ElementId\":{\"Precode\":\"189c1687-d8ef-4c40-9f64-db6ae74e19a5\"},\"Type\":2,\"SerializableType\":3},{\"ElementId\":{\"Precode\":\"50caa4f0-a088-46de-8ba8-fe2ee27eb6a8\"},\"Type\":5,\"SerializableType\":1}],\"IsAnchor\":false}],\"PagesRandomized\":false,\"QuestionsRandomized\":false,\"BlocksRandomized\":false},\"Filters\":[{\"FilterId\":{\"Precode\":\"bc8d9512-c7cf-4cc1-babb-ebcdff1e789b\"},\"Condition\":{\"Variable\":{\"Type\":2}},\"Actions\":[{\"ActionType\":6,\"LogicOwner\":{\"OwnerType\":2,\"OwnerPrecode\":\"q3\",\"OwnerGuid\":null}}]}],\"OperationalQuotas\":[],\"Scripts\":[],\"HideBackButton\":false,\"HideSurveyTitle\":false}}"
+      },
+      "SurveyBillingInfo": {
+        "type": "object",
+        "properties": {
+          "surveyId": {
+            "title": "SurveyId",
+            "type": "number"
+          },
+          "paidOrderHistory": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PaidOrderDetail"
+            },
+            "nullable": true
+          },
+          "accountCreditBalance": {
+            "title": "Credits",
+            "type": "number",
+            "format": "double"
+          },
+          "creditsToPay": {
+            "title": "Credits",
+            "type": "number",
+            "format": "double"
+          },
+          "creditsPaidToDate": {
+            "title": "Credits",
+            "type": "number",
+            "format": "double"
+          },
+          "totalSurveyCostToDate": {
+            "title": "Credits",
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SurveyFeasibilityInfo": {
+        "type": "object",
+        "properties": {
+          "surveyId": {
+            "title": "SurveyId",
+            "type": "number"
+          },
+          "feasibilityResult": {
+            "$ref": "#/components/schemas/Feasibility"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SurveyFieldworkDetails": {
+        "type": "object",
+        "properties": {
+          "surveyId": {
+            "title": "SurveyId",
+            "type": "number"
+          },
+          "targetCompletes": {
+            "title": "Completes",
+            "maximum": 5000,
+            "minimum": 50,
+            "type": "number"
+          },
+          "achievedCompletes": {
+            "title": "Completes",
+            "maximum": 5000,
+            "minimum": 50,
+            "type": "number"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SurveyLocationOutputDTO": {
+        "type": "object",
+        "properties": {
+          "surveyId": {
+            "title": "SurveyId",
+            "type": "number"
+          },
+          "workspaceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/SurveyLocationStatus"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SurveyLocationStatus": {
+        "enum": [
+          "Found",
+          "Unavailable"
+        ],
+        "type": "string"
+      },
+      "SurveyStatus": {
+        "enum": [
+          "Pending",
+          "Open",
+          "Closed",
+          "Paused",
+          "Scheduled"
+        ],
+        "type": "string"
+      },
+      "TextPlacementType": {
+        "enum": [
+          "Left",
+          "Right",
+          "Top",
+          "Bottom",
+          "Center"
+        ],
+        "type": "string"
+      },
+      "TqsResearchCategories": {
+        "type": "object",
+        "properties": {
+          "categoryIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          },
+          "otherCategory": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserId": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "externalId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Variable": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/VariableType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "VariableType": {
+        "enum": [
+          "BoolVariable",
+          "CloseEndQuestionVariable",
+          "NotVariable",
+          "QuestionBoolVariable",
+          "RangeVariable",
+          "TextQuestionVariable"
+        ],
+        "type": "string"
+      },
+      "WorkSpaceInfo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "WorkSpaceId",
+            "type": "number"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "x-api-key": {
+        "type": "apiKey",
+        "description": "x-api-key must appear in header",
+        "name": "x-api-key",
+        "in": "header"
+      },
+      "SF_ROOT_ID": {
+        "type": "apiKey",
+        "description": "SF_ROOT_ID must appear in header",
+        "name": "SF_ROOT_ID",
+        "in": "header"
+      },
+      "SU_TOKEN": {
+        "type": "apiKey",
+        "description": "SU_TOKEN is the superuser token, to be added for calls that aggregate data from multiple workspaces",
+        "name": "SU_TOKEN",
+        "in": "header"
+      },
+      "TolunaWorkspaceID": {
+        "type": "apiKey",
+        "description": "TolunaWorkspaceID may be specified in header to override default workspace id",
+        "name": "TolunaWorkspaceID",
+        "in": "header"
+      },
+      "ClientConfig": {
+        "type": "apiKey",
+        "description": "ClientConfig must appear in header",
+        "name": "ClientConfig",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "x-api-key": [ ]
+    },
+    {
+      "SF_ROOT_ID": [ ]
+    },
+    {
+      "SU_TOKEN": [ ]
+    },
+    {
+      "TolunaWorkspaceID": [ ]
+    },
+    {
+      "ClientConfig": [ ]
+    }
+  ]
+}
