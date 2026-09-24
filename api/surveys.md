@@ -31,7 +31,7 @@ For multi-workspace API keys, include `TolunaWorkspaceID` on survey endpoints th
 ## Search Surveys
 
 ```bash
-curl --location --request POST 'https://api.tolunastart.com/api/v1/Surveys/Search' \
+curl --location --request POST 'https://{{TolunaDomain}}/api/v1/Surveys/Search' \
   --header 'x-api-key: <your API key>' \
   --header 'TolunaWorkspaceID: <your workspace ID>' \
   --header 'Content-Type: application/json' \
@@ -47,13 +47,13 @@ curl --location --request POST 'https://api.tolunastart.com/api/v1/Surveys/Searc
 Use `/basic` for status, links, and summary properties. Use the full survey endpoint when you need questionnaire structure and target details.
 
 ```bash
-curl --location 'https://api.tolunastart.com/api/v1/Surveys/<survey ID>/basic' \
+curl --location 'https://{{TolunaDomain}}/api/v1/Surveys/<survey ID>/basic' \
   --header 'x-api-key: <your API key>' \
   --header 'TolunaWorkspaceID: <your workspace ID>'
 ```
 
 ```bash
-curl --location 'https://api.tolunastart.com/api/v1/Surveys/<survey ID>' \
+curl --location 'https://{{TolunaDomain}}/api/v1/Surveys/<survey ID>' \
   --header 'x-api-key: <your API key>' \
   --header 'TolunaWorkspaceID: <your workspace ID>'
 ```

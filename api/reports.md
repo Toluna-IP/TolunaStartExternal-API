@@ -38,7 +38,7 @@ The live OpenAPI schema names the end timestamp field `toTimeStampUTC`. Some old
 ## Start A/DIY Export
 
 ```bash
-curl --location --request POST 'https://api.tolunastart.com/api/v1/Reports/<survey ID>/startExport' \
+curl --location --request POST 'https://{{TolunaDomain}}/api/v1/Reports/<survey ID>/startExport' \
   --header 'accept: text/plain' \
   --header 'x-api-key: <your API key>' \
   --header 'TolunaWorkspaceID: <your workspace ID>' \
@@ -53,7 +53,7 @@ curl --location --request POST 'https://api.tolunastart.com/api/v1/Reports/<surv
 ## Poll Export Status
 
 ```bash
-curl --location 'https://api.tolunastart.com/api/v1/Reports/<export token>' \
+curl --location 'https://{{TolunaDomain}}/api/v1/Reports/<export token>' \
   --header 'accept: text/plain' \
   --header 'x-api-key: <your API key>' \
   --header 'TolunaWorkspaceID: <your workspace ID>'

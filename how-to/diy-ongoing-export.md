@@ -13,7 +13,7 @@ Use this workflow to retrieve respondent data for Toluna Start A/DIY surveys on 
 Activity includes survey content modification, respondent completion, or data cleanup.
 
 ```bash
-curl --location --request POST 'https://api.tolunastart.com/api/v1/Reports/ChangeSet' \
+curl --location --request POST 'https://{{TolunaDomain}}/api/v1/Reports/ChangeSet' \
   --header 'x-api-key: <your API key>' \
   --header 'Content-Type: application/json' \
   --data-raw '{
@@ -45,7 +45,7 @@ Example response item:
 Use the survey ID and workspace ID from the change set.
 
 ```bash
-curl --location --request POST 'https://api.tolunastart.com/api/v1/Reports/<survey ID>/startExport' \
+curl --location --request POST 'https://{{TolunaDomain}}/api/v1/Reports/<survey ID>/startExport' \
   --header 'x-api-key: <your API key>' \
   --header 'TolunaWorkspaceID: <workspace ID>' \
   --header 'Content-Type: application/json'
@@ -60,7 +60,7 @@ The response is an export token such as:
 ## 3. Poll for Completion
 
 ```bash
-curl --location 'https://api.tolunastart.com/api/v1/Reports/<export token>' \
+curl --location 'https://{{TolunaDomain}}/api/v1/Reports/<export token>' \
   --header 'x-api-key: <your API key>' \
   --header 'TolunaWorkspaceID: <workspace ID>'
 ```

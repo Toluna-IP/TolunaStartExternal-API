@@ -20,7 +20,7 @@ Metadata endpoints return lookup values that support survey discovery, survey cr
 Use this endpoint early in an integration to determine whether `TolunaWorkspaceID` is needed for subsequent calls.
 
 ```bash
-curl --location 'https://api.tolunastart.com/api/v1/Metadata/Workspaces' \
+curl --location 'https://{{TolunaDomain}}/api/v1/Metadata/Workspaces' \
   --header 'x-api-key: <your API key>'
 ```
 

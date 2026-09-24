@@ -17,7 +17,7 @@ nav_order: 2
 ## Base URL
 
 ```text
-https://api.tolunastart.com/api/v1/
+https://{{TolunaDomain}}/api/v1/
 ```
 
 ## Content Types

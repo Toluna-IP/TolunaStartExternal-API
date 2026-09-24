@@ -21,7 +21,7 @@ The guide is organized around the same core areas exposed in Swagger:
 All current API calls use version `v1`:
 
 ```text
-https://api.tolunastart.com/api/v1/
+https://{{TolunaDomain}}/api/v1/
 ```
 
 ## Common Flow

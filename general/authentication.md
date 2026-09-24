@@ -19,7 +19,7 @@ If an API key is associated with multiple workspaces and a workspace-specific en
 ## Example Request
 
 ```bash
-curl --location --request POST 'https://api.tolunastart.com/api/v1/Surveys/Search' \
+curl --location --request POST 'https://{{TolunaDomain}}/api/v1/Surveys/Search' \
   --header 'accept: text/plain' \
   --header 'x-api-key: <your API key>' \
   --header 'TolunaWorkspaceID: <your workspace ID>' \

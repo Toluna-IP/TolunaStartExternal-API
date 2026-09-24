@@ -18,4 +18,4 @@ The Toluna Start API is a REST API that supports secure integration with the Tol
 
 The public Swagger UI remains the detailed source for endpoint request and response models:
 
-[Open Swagger UI](https://api.tolunastart.com/swagger/index.html){: .btn .btn-primary }
+[Open Swagger UI](https://{{TolunaDomain}}/swagger/index.html){: .btn .btn-primary }

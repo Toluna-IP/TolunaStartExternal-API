@@ -16,13 +16,13 @@ Health endpoints are useful for connectivity checks and version verification.
 ## Ping
 
 ```bash
-curl --location 'https://api.tolunastart.com/api/v1/Ping' \
+curl --location 'https://{{TolunaDomain}}/api/v1/Ping' \
   --header 'x-api-key: <your API key>'
 ```
 
 ## Version
 
 ```bash
-curl --location 'https://api.tolunastart.com/api/v1/Version' \
+curl --location 'https://{{TolunaDomain}}/api/v1/Version' \
   --header 'x-api-key: <your API key>'
 ```

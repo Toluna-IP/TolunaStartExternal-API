@@ -13,7 +13,7 @@ Use this workflow to retrieve respondent data for eligible Toluna Full Service s
 Filtering by survey status is not available for Full Service change sets.
 
 ```bash
-curl --location --request POST 'https://api.tolunastart.com/api/v1/Reports/FullService/ChangeSet' \
+curl --location --request POST 'https://{{TolunaDomain}}/api/v1/Reports/FullService/ChangeSet' \
   --header 'x-api-key: <your API key>' \
   --header 'Content-Type: application/json' \
   --data-raw '{
@@ -36,7 +36,7 @@ Example response item:
 ## 2. Start an Export
 
 ```bash
-curl --location --request POST 'https://api.tolunastart.com/api/v1/Reports/FullService/<survey ID>/startExport' \
+curl --location --request POST 'https://{{TolunaDomain}}/api/v1/Reports/FullService/<survey ID>/startExport' \
   --header 'x-api-key: <your API key>' \
   --header 'TolunaWorkspaceID: <workspace ID>' \
   --header 'Content-Type: application/json'
@@ -45,7 +45,7 @@ curl --location --request POST 'https://api.tolunastart.com/api/v1/Reports/FullS
 ## 3. Poll for Completion
 
 ```bash
-curl --location 'https://api.tolunastart.com/api/v1/Reports/FullService/<export token>' \
+curl --location 'https://{{TolunaDomain}}/api/v1/Reports/FullService/<export token>' \
   --header 'x-api-key: <your API key>' \
   --header 'TolunaWorkspaceID: <workspace ID>'
 ```

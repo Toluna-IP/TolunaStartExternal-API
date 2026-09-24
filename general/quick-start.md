@@ -17,19 +17,19 @@ Request API access from Toluna. Each API request must include an `x-api-key` hea
 Call the Health endpoints:
 
 ```bash
-curl --location 'https://api.tolunastart.com/api/v1/Ping' \
+curl --location 'https://{{TolunaDomain}}/api/v1/Ping' \
   --header 'x-api-key: <your API key>'
 ```
 
 ```bash
-curl --location 'https://api.tolunastart.com/api/v1/Version' \
+curl --location 'https://{{TolunaDomain}}/api/v1/Version' \
   --header 'x-api-key: <your API key>'
 ```
 
 ## 3. Discover Workspaces
 
 ```bash
-curl --location 'https://api.tolunastart.com/api/v1/Metadata/Workspaces' \
+curl --location 'https://{{TolunaDomain}}/api/v1/Metadata/Workspaces' \
   --header 'x-api-key: <your API key>'
 ```
 
@@ -38,7 +38,7 @@ If the response includes multiple workspaces, include `TolunaWorkspaceID` on wor
 ## 4. Find Surveys
 
 ```bash
-curl --location --request POST 'https://api.tolunastart.com/api/v1/Surveys/Search' \
+curl --location --request POST 'https://{{TolunaDomain}}/api/v1/Surveys/Search' \
   --header 'x-api-key: <your API key>' \
   --header 'TolunaWorkspaceID: <your workspace ID>' \
   --header 'Content-Type: application/json' \

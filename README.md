@@ -32,7 +32,7 @@ assets/openapi/toluna-start-openapi.json
 Refresh it from:
 
 ```text
-https://api.tolunastart.com/swagger/v1/swagger.json
+https://{{TolunaDomain}}/swagger/v1/swagger.json
 ```
 
 [Just the Docs]: https://just-the-docs.github.io/just-the-docs/
