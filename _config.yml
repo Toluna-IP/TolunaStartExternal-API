@@ -15,8 +15,5 @@ callouts:
     title: Warning
     color: yellow
 
-aux_links:
-  Swagger UI: https://api.tolunastart.com/swagger/index.html
-
 plugins:
   - jekyll-remote-theme
