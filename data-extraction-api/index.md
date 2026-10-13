@@ -1,7 +1,6 @@
 ---
 title: Data Extraction API
-parent: Home
-nav_order: 4
+nav_order: 5
 ---
 
 # Data Extraction API
@@ -236,3 +235,4 @@ The `respondents` object is an array where each entry represents an individual r
 | `numericAnswerData` | Contains numeric response data. | Numeric questions only |  |
 | `createdDate` | Indicates the creation timestamp of the response record. | All |  |
 | `modifiedDate` | Indicates the last modification timestamp of the response record. | All |  |
+

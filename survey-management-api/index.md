@@ -1,7 +1,6 @@
 ---
 title: Survey Management API
-parent: Home
-nav_order: 3
+nav_order: 4
 ---
 
 # Survey Management API
@@ -26,3 +25,4 @@ Refer to Swagger documentation for request and response format details. Data sam
 | `PUT /surveys/{surveyId}/launch` | Processes payment and initiates launch or relaunch of the survey. Survey price in credits has to be retrieved from the billing details and passed to this call as a safety measure. |
 | `PUT /surveys/{surveyId}/pause` | Puts the survey on hold. |
 | `GET /surveys/{surveyId}/fieldwork` | Returns the number of achieved completes for the survey. |
+

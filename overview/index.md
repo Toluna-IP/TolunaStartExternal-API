@@ -1,7 +1,6 @@
 ---
 title: Overview
-parent: Home
-nav_order: 1
+nav_order: 2
 ---
 
 # Overview
@@ -59,3 +58,4 @@ curl --location --request POST '{{TSAPI_root_URL}}/Surveys/Search' \
     "surveyStatuses": ["Closed"]
   }'
 ```
+

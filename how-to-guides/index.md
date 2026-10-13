@@ -1,7 +1,6 @@
 ---
 title: How-To Guides
-parent: Home
-nav_order: 5
+nav_order: 6
 ---
 
 # How-To Guides
@@ -195,3 +194,4 @@ Download the export file using the provided URL.
 - For guidance on historical data extraction, contact your Toluna representative.
 - Category, research category, and survey status information are not available for full service studies in the API.
 - Clients are expected to overwrite their local data copies for every survey appearing in the change set to ensure data consistency with Toluna internal systems.
+
