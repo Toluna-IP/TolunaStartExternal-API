@@ -5,10 +5,15 @@ nav_order: 5
 
 # Data Extraction API
 
+{: .no_toc }
+
 The Toluna API offers two distinct collections of endpoints for downloading raw respondent data from surveys:
 
 1. Toluna Start Surveys: Used for exporting data from A/DIY surveys fielded within the Toluna Start platform. Data is available for surveys fielded within the last two years.
 2. Full-Service Surveys: Used for exporting data from full-service projects that were scripted in ConfirmIT and fielded by Toluna on behalf of the client. The availability of this data is subject to the data retention contract policy within Toluna Analytics.
+
+* TOC
+{:toc}
 
 ## A/DIY Surveys - Toluna Start
 

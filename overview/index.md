@@ -5,6 +5,11 @@ nav_order: 2
 
 # Overview
 
+{: .no_toc }
+
+* TOC
+{:toc}
+
 ## Toluna Start API Overview
 
 The Toluna Start API offers a robust, programmatic interface to the Toluna platform, built on industry-standard technologies to ensure secure and efficient integration.

@@ -5,6 +5,11 @@ nav_order: 6
 
 # How-To Guides
 
+{: .no_toc }
+
+* TOC
+{:toc}
+
 ## Working with Common Demographic Attributes in Toluna Start A/DIY Surveys
 
 For Toluna Start A/DIY surveys, common demographic attributes are included in the default data extraction. When exporting data from an A/DIY survey, you have the option to specify a subset of attribute IDs to customize the report's content.
