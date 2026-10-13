@@ -4,7 +4,6 @@ nav_order: 5
 ---
 
 # Data Extraction API
-
 {: .no_toc }
 
 The Toluna API offers two distinct collections of endpoints for downloading raw respondent data from surveys:
