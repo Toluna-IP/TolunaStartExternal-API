@@ -5,4 +5,5 @@ gem "jekyll", "~> 4.4.1" # installed by `gem jekyll`
 
 gem "just-the-docs", "0.12.0" # pinned to the current release
 # gem "just-the-docs"        # always download the latest release
-gem "jekyll-remote-theme", "~> 0.4.3"
+
+gem "jekyll-default-layout" # added as instructed by just-the-docs readme
